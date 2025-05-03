@@ -1,0 +1,32 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block title %} Home {% endblock %}
+{% block content %}
+{% load l10n %}
+
+    <div class="row">
+		{% for product in products %}
+		<div class="col-lg-4">
+			<img class="thumbnail" src="{{ product.imageURL }}" alt="">
+			<div class="box-element product">
+				<h6><strong> {{ product.name }} </strong></h6>
+				<hr>
+
+				<button data-product="{{ product.id }}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Agregar al carro</button>
+				<a class="btn btn-outline-success" href="#">Ver más</a>
+				
+				<h4 style="display: inline-block"><strong>  ${{ product.formatted_price }} </strong></h4>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+
+{% endblock %}
+
+<!--
+
+.\env_web\Scripts\activate
+cd core
+python manage.py runserver
+
+-->

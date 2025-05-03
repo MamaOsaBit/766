@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Registro{% endblock %}</title>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="login-container d-flex justify-content-center align-items-center vh-100">
+        <div class="row">
+            <div class="card">
+                <div class="card-body">
+                    <h2>Registrar</h2>
+                    <hr>
+                    <form method="post" acction="">
+
+                        {% csrf_token %}
+                        {{form}}
+                        {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small>
+                         
+                            <small class="text-center  fw-hold">
+                                <a href="{% url 'store' %}">Ir al Home</a> |
+                                ¿Ya tienes una cuenta?
+                                <a href="{% url 'login' %}" class="text-danger">Inicia sesion</a>
+                            </small>
+                        <input type="submit" value="Registrar" class="btn btn-success float-right m-2">
+                        {% if form.non_field_errors %}
+                        {% for error in form.non_field_errors %}
+                        <div class="alert alert-danger mt-2">{{ error }}</div>
+                        {% endfor %}
+                        {% endif %}
+                        {% if messages %}
+                        {% for msg in messages %}
+                        <div class="alert alert-{{msg.tags}}" role="alert">
+                            {{ msg }}
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

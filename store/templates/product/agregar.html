@@ -1,0 +1,27 @@
+{% extends 'product/admin.html' %}
+{% load static %}
+{% block title %} Agregar {% endblock %}
+{% block content %}
+
+<div class="row">
+    <div class="col-12 col-md-6 offset-md-3">
+        <h2>Agregar Producto</h2>
+        <hr>
+        <div class="card">
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data" action="">
+                    {% csrf_token %}
+                    {{ form.as_p}}
+                    <div class="d-flex justify-content-end">
+                        <input type="reser" value="Limpiar" class="btn btn-warning float-right">
+                        <input type="submit" value="Agregar" class="btn btn-success float-right">
+                    </div>
+                    <a href="{% url 'listar'%}" class="btn btn-success">Volver</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

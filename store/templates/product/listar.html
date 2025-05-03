@@ -1,0 +1,48 @@
+{% extends 'product/admin.html' %}
+{% load static %}
+{% block title %} Agregar {% endblock %}
+{% block content %}
+
+<div class="conteiner m-2">
+    <h2>Lista de Productos</h2>
+    <hr>
+    <div class="d-flex justify-content-center m-2">
+        <a href="{% url 'agregar' %}" class="btn btn-success">Agregar</a> |
+        <a href="{% url 'store' %}" class="btn btn-success">Home</a>
+    </div>
+    <hr>
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Imagen</th>
+            <th>Digital</th>
+            <th>Modificar</th>
+        </tr>
+
+        {% for product in products %}
+
+        <tr>
+            <th>{{ product.name | title}}</th>
+            <th>{{ product.price }}</th>
+            <th><img src="{{ product.imageURL }}" alt=""></th>
+            <th>
+                {% if product.digital %}
+                <p>Si</p>
+                {% else %}
+                <p>No</p>
+                {% endif %}
+            </th>
+            <td>
+                <a href="{% url 'editar' product.id %}" class="btn btn-success">Modificar</a> |
+                <a href="{% url 'eliminar' product.id %}" class="btn btn-danger">Eliminar</a>
+            </td>
+            
+        </tr>
+
+        {% endfor %}
+    </table>
+
+
+
+    {% endblock %}
