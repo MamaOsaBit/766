@@ -26,7 +26,8 @@ SECRET_KEY = 'fa_2=@w&#7ei58-jhs-+^hrfj$^)jw&zi&_4pc#9rqzs(_*o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['https://code-4gpl.onrender.com/']
+ALLOWED_HOSTS = ['code-4gpl.onrender.com']
+
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
