@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: ecommerce-pastry
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn ecommerce_pastry.wsgi
+    staticPublishPath: staticfiles
